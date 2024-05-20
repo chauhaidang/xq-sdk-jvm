@@ -1,0 +1,37 @@
+plugins {
+    id("xq-base")
+}
+
+group = "com.xq"
+version = "0.0.1"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation(platform("org.junit:junit-bom:5.10.0"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    compileOnly("org.projectlombok:lombok:1.18.30")
+    annotationProcessor("org.projectlombok:lombok:1.18.30")
+}
+
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test// tests are required to run before generating the report
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                    "com/xq/Config.class",
+            ])
+        }))
+    }
+    reports {
+        html.required.set(true)
+    }
+}
+
