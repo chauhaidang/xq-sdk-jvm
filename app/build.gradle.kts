@@ -5,6 +5,7 @@ plugins {
 dependencies {
     implementation(project(":data-model"))
     implementation(project(":business-logic"))
+    implementation(project(":common"))
 }
 
 application {
