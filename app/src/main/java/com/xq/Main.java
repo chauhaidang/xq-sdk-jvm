@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        list();
+        stack();
     }
-
 
     static void arrays() {
         int[] array = new int[10];
@@ -50,6 +50,9 @@ public class Main {
         list.add("1");
         list.add("2");
         list.add("3");
+
+        list.addAll(List.of("4", "5", "6"));
+
         System.out.println(list);
         System.out.println(list.size());
         System.out.println(list.contains("1"));
@@ -59,5 +62,21 @@ public class Main {
         }
 
         list.forEach(System.out::println);
+    }
+
+    static void stack() {
+        Stack<String> stack = new Stack<>();
+        stack.push("1");
+        stack.push("2");
+        stack.push("3");
+        stack.push("4");
+        stack.push("5");
+
+        System.out.printf("Stack size::: %s%n", stack.size());
+        System.out.printf("Stack pop::: %s%n", stack.pop());
+        System.out.printf("Stack size::: %s%n", stack.size());
+        System.out.printf("Stack peek::: %s%n", stack.peek());
+        System.out.printf("Stack size::: %s%n", stack.size());
+        System.out.printf("Is stack empty?::: %s%n", stack.empty());
     }
 }
