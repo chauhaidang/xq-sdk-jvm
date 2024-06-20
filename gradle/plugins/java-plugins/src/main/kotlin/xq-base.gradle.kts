@@ -30,7 +30,7 @@ tasks.jacocoTestReport {
 }
 
 tasks.register<Zip>("xqBundle") {
-    group = "XQ Base Plugins"
+    group = "xq"
     description = "Bundle jar & files in class path"
     from(tasks.jar)
     from(configurations.runtimeClasspath)
@@ -38,7 +38,7 @@ tasks.register<Zip>("xqBundle") {
 }
 
 tasks.register<JarCount>("xqCountJars") {
-    group = "XQ Base Plugins"
+    group = "xq"
     description = "Count jars in class path"
 
     allJars.from(tasks.jar)
@@ -51,10 +51,8 @@ tasks.build {
 }
 
 tasks.register("xqBuildAll") {
-    group = "XQ Base Plugins"
+    group = "xq"
     description = "Build all"
     dependsOn(tasks.named("build"))
     dependsOn(tasks.named("xqCountJars"))
 }
-
-

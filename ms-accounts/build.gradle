@@ -1,34 +1,84 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.3.0'
-	id 'io.spring.dependency-management' version '1.1.5'
+    id 'java'
+    id 'org.springframework.boot' version '3.3.0'
+    id 'io.spring.dependency-management' version '1.1.5'
+    id 'groovy'
+    id 'xq-base'
 }
 
 version = '0.0.1'
 
 configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'com.h2database:h2'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'com.h2database:h2'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
+tasks.register('msComponentTest', Test) {
+    group = "xq"
+    description = "run micro-service component testing"
+    dependsOn(test)
+    include("component/**")
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+    testLogging {
+        showStandardStreams = true
+        showExceptions = true
+        showCauses = true
+        exceptionFormat = TestExceptionFormat.FULL
+    }
+}
+
+tasks.register("xqStartApp", Exec) {
+    group = "xq"
+    commandLine "java", "--version"
+    doLast {
+        def jarPath = "$tasks.bootJar.archivePath"
+        File logFile = new File("$workingDir/blackbox.log")
+        def command = ["java", "-jar", "-Dspring.profiles.active=blackbox", jarPath.toString()]
+
+        def processBuilder = new ProcessBuilder(command)
+        processBuilder.redirectErrorStream(true)
+        processBuilder.redirectOutput(logFile)
+        def process = processBuilder.start()
+
+        println "Started JAR file with PID: ${process.pid().toString()}"
+        def pidFile = new File("$workingDir/blackbox.pid")
+        pidFile.text = process.pid().toString()
+    }
+}
+
+tasks.register("xqStopApp", Exec) {
+    group = "xq"
+    commandLine "echo", "Kill process with pid from file blackbox.pid"
+    doFirst {
+        def pidFile = new File("$workingDir/blackbox.pid")
+        if (pidFile.exists()) {
+            def pid = pidFile.text
+            def command = ["kill", pid]
+            def processBuilder = new ProcessBuilder(command)
+            processBuilder.start()
+        }
+    }
 }
