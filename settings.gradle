@@ -7,11 +7,12 @@
 
 pluginManagement {
     repositories.gradlePluginPortal()
-    includeBuild("plugins")
+    includeBuild("gradle/plugins")
 }
 
 dependencyResolutionManagement {
     repositories.mavenCentral()
+    includeBuild("gradle/platform")
 }
 
 rootProject.name = "xq-sdk-jvm"
