@@ -1,5 +1,5 @@
 plugins {
-    id("my-library")
+    id("xq-base")
 }
 
 group = "com.xq"

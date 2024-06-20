@@ -1,5 +1,5 @@
 plugins {
-    id("my-application")
+    id("application")
 }
 
 dependencies {
