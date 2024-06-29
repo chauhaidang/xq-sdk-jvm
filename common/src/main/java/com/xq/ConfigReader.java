@@ -9,7 +9,7 @@ public class ConfigReader {
         Properties props = new Properties();
         try (InputStream in = getClass().getClassLoader().getResourceAsStream(fileName)) {
             props.load(in);
-        } catch (IOException e) {
+        } catch (IOException | NullPointerException e) {
             throw new RuntimeException("can't read config", e.getCause());
         }
 

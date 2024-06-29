@@ -3,6 +3,7 @@ plugins {
 }
 
 javaPlatform.allowDependencies()
+
 dependencies {
     api(platform("com.fasterxml.jackson:jackson-bom:2.14.2"))
 }

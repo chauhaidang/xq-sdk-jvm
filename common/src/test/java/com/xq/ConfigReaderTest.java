@@ -33,4 +33,11 @@ public class ConfigReaderTest {
         prop.setProperty("sdk.version2", "");
         assertEquals(prop, new ConfigReader().readConfig());
     }
+
+    @Test
+    void shouldThrowWhenFileNotFound() {
+        assertThrows(RuntimeException.class, () -> {
+            new ConfigReader().readConfig("non_existing_file.properties");
+        }, "config reader does not throw io exception");
+    }
 }
