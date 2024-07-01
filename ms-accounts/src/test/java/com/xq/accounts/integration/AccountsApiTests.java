@@ -1,4 +1,4 @@
-package com.xq.accounts.component;
+package com.xq.accounts.integration;
 
 import org.junit.jupiter.api.Test;
 

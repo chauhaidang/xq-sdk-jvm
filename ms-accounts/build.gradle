@@ -36,13 +36,6 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-tasks.register('msComponentTest', Test) {
-    group = "xq"
-    description = "run micro-service component testing"
-    dependsOn(test)
-    include("component/**")
-}
-
 tasks.withType(Test).configureEach {
     useJUnitPlatform()
     testLogging {
@@ -52,6 +45,22 @@ tasks.withType(Test).configureEach {
         exceptionFormat = TestExceptionFormat.FULL
     }
 }
+
+test {
+    filter {
+        includeTestsMatching("com.xq.accounts.unit.*")
+    }
+}
+
+
+tasks.register('msIntegrationTest', Test) {
+    group = "xq"
+    description = "run micro-service integration testing"
+    filter {
+        includeTestsMatching("com.xq.accounts.integration.*")
+    }
+}
+
 
 tasks.register("xqStartApp", Exec) {
     group = "xq"

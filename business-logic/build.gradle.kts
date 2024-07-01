@@ -5,10 +5,6 @@ plugins {
 group = "com.xq"
 version = "0.0.1"
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     //Dependencies will be resolved automatically by what is already defined in platform module
     implementation(platform("com.xq:platform"))
@@ -17,6 +13,4 @@ dependencies {
     implementation("org.slf4j:slf4j-api")
 }
 
-tasks.test {
-    useJUnitPlatform()
-}
+
