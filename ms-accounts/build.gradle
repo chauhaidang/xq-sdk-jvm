@@ -33,6 +33,7 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'com.intuit.karate:karate-junit5:1.4.1'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
@@ -52,8 +53,17 @@ test {
     }
 }
 
+sourceSets {
+    test {
+        resources {
+            srcDir file('src/test/java')
+            exclude "**/*.java"
+        }
+    }
+}
 
-tasks.register('msIntegrationTest', Test) {
+
+tasks.register('msIntTest', Test) {
     group = "xq"
     description = "run micro-service integration testing"
     filter {
@@ -61,6 +71,22 @@ tasks.register('msIntegrationTest', Test) {
     }
 }
 
+tasks.register("msCompTest", Test) {
+    group = "xq"
+    description = "run micro-service component testing"
+    filter {
+        includeTestsMatching("com.xq.accounts.component.*")
+    }
+    systemProperty "karate.options", System.properties.getProperty("karate.options")
+    systemProperty "karate.env", System.properties.getProperty("karate.env")
+    outputs.upToDateWhen { false }
+}
+
+tasks.register('karateDebug', JavaExec) {
+    classpath = sourceSets.test.runtimeClasspath
+    setMainClass('com.intuit.karate.cli.Main')
+//    main = 'com.intuit.karate.cli.Main'
+}
 
 tasks.register("xqStartApp", Exec) {
     group = "xq"
