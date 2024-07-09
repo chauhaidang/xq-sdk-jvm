@@ -33,4 +33,18 @@ public class AccountsController {
         CustomerDto customerDto = accountService.fetchAccount(mobileNumber);
         return ResponseEntity.ok(customerDto);
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<ResponseDto> updateAccount(@RequestBody CustomerDto customerDto) {
+        log.info("Request received to update account details for customer with mobileNumber: {}",
+                customerDto.getAccount().getAccountNumber().toString());
+        boolean isUpdated = accountService.updateAccount(customerDto);
+        return isUpdated ?
+                ResponseEntity
+                        .status(HttpStatus.OK)
+                        .body(new ResponseDto(AccountsContants.STATUS_200, AccountsContants.MSG_200)) :
+                ResponseEntity
+                        .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                        .body(new ResponseDto(AccountsContants.STATUS_500, AccountsContants.MSG_500));
+    }
 }
