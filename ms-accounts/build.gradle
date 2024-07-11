@@ -33,7 +33,7 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'com.intuit.karate:karate-junit5:1.4.1'
+    testImplementation 'com.intuit.karate:karate-core:1.4.1'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
