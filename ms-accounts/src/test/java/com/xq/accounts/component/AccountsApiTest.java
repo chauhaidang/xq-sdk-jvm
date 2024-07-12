@@ -9,63 +9,42 @@ import org.junit.jupiter.api.Test;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static com.xq.accounts.component.TestDto.*;
 
 public class AccountsApiTest {
 
     String createEndpoint = "http://localhost:8080/api/accounts/create";
     String fetchEndpoint = "http://localhost:8080/api/accounts/fetch";
     String updateEndpoint = "http://localhost:8080/api/accounts/update";
+    String deleteEndpoint = "http://localhost:8080/api/accounts/delete";
 
-    private int randomNumber() {
-        return (int) (Math.random() * 100000000);
-    }
+    AccountSpecification accountSpecification = new AccountSpecification();
 
     @Test
     void testCreateNewAccount() throws Exception {
-        Json reqPayload = Json.object();
-        String uuid = UUID.randomUUID().toString();
-        int randomNumber = randomNumber();
-        reqPayload.set("name", uuid);
-        reqPayload.set("email", String.format("%s@email.com", uuid));
-        reqPayload.set("mobileNumber", randomNumber + "");
-
-        Response res = Http.to(createEndpoint).postJson(reqPayload.toString());
+        AccountResponse accountResponse = accountSpecification.createNew();
+        Response res = accountResponse.resBody();
         assertEquals(201, res.getStatus());
         Match.that(res.getBodyConverted()).isEqualTo("{ statusCode: '201', statusMsg: 'Account created successfully' }");
     }
 
     @Test
     void testCanNotCreateExistingAccount() throws Exception {
-        Json reqPayload = Json.object();
-        String uuid = UUID.randomUUID().toString();
-        int randomNumber = randomNumber();
-        reqPayload.set("name", uuid);
-        reqPayload.set("email", String.format("%s@email.com", uuid));
-        reqPayload.set("mobileNumber", randomNumber + "");
-
-        Http.to(createEndpoint).postJson(reqPayload.toString());
+        AccountResponse accountResponse = accountSpecification.createNew();
         Response res = Http.to(createEndpoint)
-                .postJson(reqPayload.toString());
+                .postJson(accountResponse.reqBody().toString());
         Match.that(res.getStatus()).isEqualTo(400);
     }
 
     @Test
     void testCanUpdateAccountByAccountNumber() {
-        Json reqPayload = Json.object();
-        String uuid = UUID.randomUUID().toString();
-        int randomNumber = randomNumber();
-        reqPayload.set("name", uuid);
-        reqPayload.set("email", String.format("%s@email.com", uuid));
-        reqPayload.set("mobileNumber", randomNumber + "");
-
-        //Create an account
-        Http.to(createEndpoint).postJson(reqPayload.toString());
-        Response res = Http.to(fetchEndpoint).param("mobileNumber", randomNumber + "").get();
+        AccountResponse accountResponse = accountSpecification.createNew();
+        Response res = Http.to(fetchEndpoint).param("mobileNumber", accountResponse.mobileNumber()).get();
         Json resAccount = Json.of(res.getBodyConverted());
 
         //Update an account with newly created account
         String newName = UUID.randomUUID().toString();
-        int newNumber = randomNumber();
+        int newNumber = AccountSpecification.randomNumber();
         resAccount.set("name", newName);
         resAccount.set("email", newName + "@gmail.com");
         resAccount.set("mobileNumber", newNumber + "");
@@ -83,7 +62,7 @@ public class AccountsApiTest {
     void testCanNotUpdateIfNotExist() {
         Json reqPayload = Json.object();
         String newName = UUID.randomUUID().toString();
-        int newNumber = randomNumber();
+        int newNumber = AccountSpecification.randomNumber();
         reqPayload.set("name", newName);
         reqPayload.set("email", newName + "@gmail.com");
         reqPayload.set("mobileNumber", newNumber + "");
@@ -93,9 +72,26 @@ public class AccountsApiTest {
 
         Response res = Http.to(updateEndpoint).put(reqPayload);
         Match.that(res.getStatus()).isEqualTo(404);
-        Match.that(
-                res.getBodyConverted())
-                .contains(String.format("{ errorCode: NOT_FOUND, errorMessage:Account not found with the given input data AccountNumber:'%s' }", "1234512309"));
+        Match.that(res.getBodyConverted())
+                .contains(String.format(
+                        "{ errorCode: NOT_FOUND, errorMessage:Account not found with the given input data AccountNumber:'%s' }", "1234512309"));
 
+    }
+
+    @Test
+    void testDeleteAnAccountByMobileNumber() {
+        AccountResponse accountResponse = accountSpecification.createNew();
+        Response res = Http.to(deleteEndpoint).param("mobileNumber", accountResponse.mobileNumber()).delete();
+        assertEquals(200, res.getStatus());
+        Match.that(res.getBodyConverted()).isEqualTo("{ statusCode: '200', statusMsg: 'Account deleted successfully' }");
+    }
+
+    @Test
+    void testCanNotDeleteAnAccountIfNotExist() {
+        Response res = Http.to(deleteEndpoint).param("mobileNumber", "123456789").delete();
+        assertEquals(404, res.getStatus());
+        Match.that(res.getBodyConverted())
+                .contains(String.format(
+                        "{ errorCode: NOT_FOUND, errorMessage:Customer not found with the given input data mobileNumber:'%s' }", "123456789"));
     }
 }

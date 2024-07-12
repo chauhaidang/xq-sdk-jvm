@@ -1,6 +1,7 @@
 package com.xq.accounts.constants;
 
 public class AccountsContants {
+
     private AccountsContants() {
     }
 
@@ -12,4 +13,5 @@ public class AccountsContants {
     public static final String MSG_200 = "Request processed successfully";
     public static final String STATUS_500 = "500";
     public static final String MSG_500 = "An error occurred. Please try again or contact product support";
+    public static final String MSG_DEL_ACCOUNT_SUCCESS = "Account deleted successfully";
 }

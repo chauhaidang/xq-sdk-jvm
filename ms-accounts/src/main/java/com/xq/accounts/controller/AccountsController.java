@@ -47,4 +47,16 @@ public class AccountsController {
                         .status(HttpStatus.INTERNAL_SERVER_ERROR)
                         .body(new ResponseDto(AccountsContants.STATUS_500, AccountsContants.MSG_500));
     }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<ResponseDto> deleteAccount(@RequestParam String mobileNumber) {
+        log.info("Request received to delete account details for mobile number: {}", mobileNumber);
+        boolean isDeleted = accountService.deleteAccount(mobileNumber);
+        return isDeleted ?
+                ResponseEntity
+                        .status(HttpStatus.OK)
+                        .body(new ResponseDto(AccountsContants.STATUS_200, AccountsContants.MSG_DEL_ACCOUNT_SUCCESS)) :
+                ResponseEntity
+                        .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                        .body(new ResponseDto(AccountsContants.STATUS_500, AccountsContants.MSG_500));    }
 }
