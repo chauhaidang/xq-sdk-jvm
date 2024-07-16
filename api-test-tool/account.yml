@@ -1,0 +1,33 @@
+scenario:
+  name: Account Feature
+  steps:
+    - name: Create Account
+      post: http://localhost:8080/api/accounts/create
+      body:
+        {
+          name: david
+        }
+      response:
+        status: 201
+        headers:
+          Content-Type: application/json
+        body:
+          {
+            statusCode: 201,
+            statusMessage: "Created successfully"
+          }
+
+    - name: Query An Account
+      get: http://localhost:8080/api/accounts/fetch
+      queryParams:
+        mobileNumber:
+          fromPreviousResponse: mobileNumber
+      response:
+        status: 200
+        template: ./account_response_template.json
+        bodyFrom: ./testAccountFeatureResponse.js
+
+
+
+
+

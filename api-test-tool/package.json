@@ -1,0 +1,21 @@
+{
+  "name": "xq-stub-server",
+  "version": "0.0.1",
+  "description": "xq stub server",
+  "main": "index.ts",
+  "sideEffects": false,
+  "author": "chauhaidang1 <chauhaidang1@gmail.com>",
+  "repository": "https://github.com/chauhaidang/xq-sdk-jvm/stub-server",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+  },
+  "files": [
+    "CHANGELOG.md",
+    "README.md",
+    "package.json"
+  ],
+  "scripts": {
+    "start": "camouflage --version && node main.js"
+  }
+}

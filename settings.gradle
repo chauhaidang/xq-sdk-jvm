@@ -21,3 +21,5 @@ include("business-logic")
 include("data-model")
 include("common")
 include("ms-accounts")
+include 'api-test-tool'
+
