@@ -32,6 +32,7 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.h2database:h2'
 
+    testImplementation(platform("com.xq:platform"))
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'com.intuit.karate:karate-core:1.4.1'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
@@ -60,11 +61,7 @@ sourceSets {
             exclude "**/*.java"
         }
     }
-    functionalTest {
-
-    }
 }
-
 
 tasks.register('msIntTest', Test) {
     group = "xq"

@@ -27,6 +27,13 @@ tasks.test {
     finalizedBy("jacocoTestReport")
 }
 
+sourceSets.create("functionalTest")
+tasks.register<Test>("functionalTest") {
+    testClassesDirs = sourceSets["functionalTest"].output.classesDirs
+    classpath = sourceSets["functionalTest"].runtimeClasspath
+    useJUnitPlatform()
+}
+
 tasks.jacocoTestReport {
     dependsOn("test")
 }
