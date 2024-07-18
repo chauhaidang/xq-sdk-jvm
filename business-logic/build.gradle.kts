@@ -12,5 +12,23 @@ dependencies {
     implementation("org.apache.commons:commons-lang3")
     implementation("org.slf4j:slf4j-api")
 }
+tasks.test {
+    useJUnitPlatform {
+        excludeTags("slow")
+    }
+    maxParallelForks = 4
+    maxHeapSize = "1g"
+}
 
+tasks.register<Test>("testSlow") {
+    group = "xq"
+    testClassesDirs = sourceSets.test.get().output.classesDirs
+    classpath = sourceSets.test.get().runtimeClasspath
+    useJUnitPlatform {
+        includeTags("slow")
+    }
+}
 
+tasks.check {
+    dependsOn("CustomTest")
+}

@@ -22,6 +22,8 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    maxParallelForks = 4
+    maxHeapSize = "1g"
     finalizedBy("jacocoTestReport")
 }
 
