@@ -29,6 +29,7 @@ dependencies {
     annotationProcessor(platform("com.xq:platform"))
     compileOnly(platform("com.xq:platform"))
     implementation(platform("com.xq:platform"))
+    testImplementation(platform("com.xq:platform"))
 }
 
 configurations {
@@ -54,6 +55,7 @@ tasks.register("functionalTest", Test) {
     classpath = sourceSets.functionalTest.runtimeClasspath
     useJUnitPlatform()
 }
+
 tasks.register("xqBundle", Zip) {
     group = "xq"
     description = "Bundle jar & files in class path"
@@ -61,6 +63,7 @@ tasks.register("xqBundle", Zip) {
     from(configurations.runtimeClasspath)
     destinationDirectory.set(layout.buildDirectory.dir("dist"))
 }
+
 tasks.register("xqCountJars", JarCount) {
     group = "xq"
     description = "Count jars in class path"
@@ -68,6 +71,7 @@ tasks.register("xqCountJars", JarCount) {
     allJars.from(configurations.runtimeClasspath)
     countFile.set(layout.buildDirectory.file("gen/count.txt"))
 }
+
 tasks.register("xqBuildAll") {
     group = "xq"
     description = "Build all"
@@ -82,10 +86,24 @@ tasks.named("test") {
     maxHeapSize = "1g"
     finalizedBy("jacocoTestReport")
 }
+
 tasks.named("jacocoTestReport") {
     dependsOn(tasks.named("test"))
 }
+
 tasks.named("build") {
     dependsOn(tasks.named("xqBundle"))
 }
 
+tasks.register("testSlow", Test) {
+    group = "xq"
+    testClassesDirs = sourceSets.test.get().output.classesDirs
+    classpath = sourceSets.test.get().runtimeClasspath
+    useJUnitPlatform {
+        includeTags("slow")
+    }
+}
+
+tasks.check {
+    dependsOn("CustomTest")
+}
