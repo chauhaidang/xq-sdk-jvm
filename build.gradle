@@ -4,3 +4,9 @@
  * This is a general purpose Gradle build.
  * To learn more about Gradle by exploring our Samples at https://docs.gradle.org/8.6/samples
  */
+
+ext {
+    springboot_version = '3.3.0'
+    lombok_version = '1.18.30'
+    junit_version = '5.10.0'
+}

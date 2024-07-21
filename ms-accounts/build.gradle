@@ -1,41 +1,40 @@
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
 plugins {
-    id 'java'
-    id 'org.springframework.boot' version '3.3.0'
-    id 'io.spring.dependency-management' version '1.1.5'
-    id 'groovy'
     id 'xq-base'
+
 }
 
 version = '0.0.1'
 
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-}
-
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly("org.slf4j:slf4j-api")
+    compileOnly("org.projectlombok:lombok")
 
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor("org.projectlombok:lombok")
+    runtimeOnly 'com.h2database:h2:2.2.224'
 
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'com.h2database:h2'
-
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
     testImplementation(platform("com.xq:platform"))
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'com.intuit.karate:karate-core:1.4.1'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+unitTest {
+    path = "com.xq.accounts.unit.*"
+}
+
+sourceSets {
+    test {
+        resources {
+            srcDir file('src/test/java')
+            exclude "**/*.java"
+        }
+    }
 }
 
 tasks.withType(Test).configureEach {
@@ -46,20 +45,12 @@ tasks.withType(Test).configureEach {
         showCauses = true
         exceptionFormat = TestExceptionFormat.FULL
     }
+
 }
 
-test {
+tasks.named('test') {
     filter {
         includeTestsMatching("com.xq.accounts.unit.*")
-    }
-}
-
-sourceSets {
-    test {
-        resources {
-            srcDir file('src/test/java')
-            exclude "**/*.java"
-        }
     }
 }
 
@@ -77,15 +68,7 @@ tasks.register("msCompTest", Test) {
     filter {
         includeTestsMatching("com.xq.accounts.component.*")
     }
-    systemProperty "karate.options", System.properties.getProperty("karate.options")
-    systemProperty "karate.env", System.properties.getProperty("karate.env")
     outputs.upToDateWhen { false }
-}
-
-tasks.register('karateDebug', JavaExec) {
-    classpath = sourceSets.test.runtimeClasspath
-    setMainClass('com.intuit.karate.cli.Main')
-//    main = 'com.intuit.karate.cli.Main'
 }
 
 tasks.register("xqStartApp", Exec) {
@@ -94,7 +77,7 @@ tasks.register("xqStartApp", Exec) {
     doLast {
         def jarPath = "$tasks.bootJar.archivePath"
         File logFile = new File("$workingDir/blackbox.log")
-        def command = ["java", "-jar", "-Dspring.profiles.active=blackbox", jarPath.toString()]
+        def command = ["java", "-jar", "-Dspring.profiles.active=component", jarPath.toString()]
 
         def processBuilder = new ProcessBuilder(command)
         processBuilder.redirectErrorStream(true)

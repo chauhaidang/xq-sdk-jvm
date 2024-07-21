@@ -1,0 +1,35 @@
+plugins {
+    id 'java-platform'
+    id 'org.springframework.boot' version "3.3.0"
+    id 'io.spring.dependency-management' version '1.1.5'
+}
+
+javaPlatform.allowDependencies()
+
+ext {
+    springboot_version = '3.3.0'
+    lombok_version = '1.18.30'
+    junit_version = '5.10.0'
+}
+
+dependencies {
+    api(platform("org.junit:junit-bom:$junit_version"))
+    api "org.junit.jupiter:junit-jupiter"
+    api "org.junit.jupiter:junit-jupiter-api"
+    api "org.junit.jupiter:junit-jupiter-engine"
+    api "org.springframework.boot:spring-boot-starter-actuator:$springboot_version"
+    api "org.springframework.boot:spring-boot-starter-data-jpa:$springboot_version"
+    api "org.springframework.boot:spring-boot-starter-validation:$springboot_version"
+    api "org.springframework.boot:spring-boot-starter-web:$springboot_version"
+    api "org.slf4j:slf4j-api"
+    api "org.projectlombok:lombok:$lombok_version"
+}
+
+group = "com.xq"
+
+dependencies.constraints {
+    api "org.apache.commons:commons-lang3:3.12.0"
+    api "org.slf4j:slf4j-api:1.7.36"
+    api "org.slf4j:slf4j-simple:1.7.36"
+    api "com.linecorp.armeria:armeria:1.26.0"
+}

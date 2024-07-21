@@ -6,20 +6,39 @@
  */
 
 pluginManagement {
-    repositories.gradlePluginPortal()
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        mavenLocal()
+        maven { url 'https://repo.spring.io/release' }
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
     includeBuild("gradle/plugins")
 }
-
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        maven { url 'https://repo.spring.io/release' }
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+}
 dependencyResolutionManagement {
-    repositories.mavenCentral()
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
     includeBuild("gradle/platform")
 }
 
-rootProject.name = "xq-sdk-jvm"
-include("app")
-include("business-logic")
-include("data-model")
-include("common")
-include("ms-accounts")
-include 'api-test-tool'
+rootProject.name = 'xq-sdk'
+include 'app'
+include 'business-logic'
+include 'common'
+include 'ms-accounts'
+include 'e2e-api'
 

@@ -1,0 +1,91 @@
+import com.xq.JarCount
+
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'groovy'
+}
+
+group = 'com.xq'
+version = '0.1.0'
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+}
+
+//Repository configuration
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven { url 'https://repo.spring.io/release' }
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+}
+
+//Dependencies configuration
+dependencies {
+    runtimeOnly(platform("com.xq:platform"))
+    annotationProcessor(platform("com.xq:platform"))
+    compileOnly(platform("com.xq:platform"))
+    implementation(platform("com.xq:platform"))
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+class TestConfiguration {
+    String path
+}
+
+project.extensions.create("unitTest", TestConfiguration)
+project.extensions.create("intTest", TestConfiguration)
+project.extensions.create("compTest", TestConfiguration)
+
+//Source set configuration
+sourceSets.create("functionalTest")
+
+//Task registration
+tasks.register("functionalTest", Test) {
+    testClassesDirs = sourceSets.functionalTest.output.classesDirs
+    classpath = sourceSets.functionalTest.runtimeClasspath
+    useJUnitPlatform()
+}
+tasks.register("xqBundle", Zip) {
+    group = "xq"
+    description = "Bundle jar & files in class path"
+    from(tasks.jar)
+    from(configurations.runtimeClasspath)
+    destinationDirectory.set(layout.buildDirectory.dir("dist"))
+}
+tasks.register("xqCountJars", JarCount) {
+    group = "xq"
+    description = "Count jars in class path"
+    allJars.from(tasks.jar)
+    allJars.from(configurations.runtimeClasspath)
+    countFile.set(layout.buildDirectory.file("gen/count.txt"))
+}
+tasks.register("xqBuildAll") {
+    group = "xq"
+    description = "Build all"
+    dependsOn(tasks.named("build"))
+    dependsOn(tasks.named("xqCountJars"))
+}
+
+//Tasks configuration
+tasks.named("test") {
+    useJUnitPlatform()
+    maxParallelForks = 4
+    maxHeapSize = "1g"
+    finalizedBy("jacocoTestReport")
+}
+tasks.named("jacocoTestReport") {
+    dependsOn(tasks.named("test"))
+}
+tasks.named("build") {
+    dependsOn(tasks.named("xqBundle"))
+}
+
