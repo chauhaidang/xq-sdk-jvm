@@ -16,13 +16,29 @@ public class ConfigReader {
         return props;
     }
 
-    public Properties readConfig() throws IOException {
+    public Properties readConfig() {
         return readConfig(Constant.DEFAULT_CONFIGURATION_FILE);
     }
 
     public Config loadConfig(Properties props) {
         Config conf = new Config();
         conf.setSdkVersion(props.getProperty("sdk.version"));
+        return conf;
+    }
+
+    public String readConfigValue(Properties props, String key) {
+        if (!props.containsKey(key)) {
+            throw new RuntimeException(String.format("Error reading config value: key '%s' not found!", key));
+        }
+        return props.getProperty(key);
+    }
+
+    public Config loadConfig() {
+        Config conf = new Config();
+        Properties props = readConfig();
+        conf.setSdkVersion(props.getProperty("sdk.version", "0.0.0"));
+        conf.setApiGateway(readConfigValue(props, "api.gateway"));
+
         return conf;
     }
 }

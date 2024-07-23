@@ -4,6 +4,9 @@ import com.intuit.karate.Http;
 import com.intuit.karate.Json;
 import com.intuit.karate.Match;
 import com.intuit.karate.http.Response;
+import com.xq.Customer;
+import com.xq.Dto;
+import com.xq.account.CreatingDefaultAccount;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
@@ -22,10 +25,9 @@ public class AccountsApiTest {
 
     @Test
     void testCreateNewAccount() throws Exception {
-        AccountResponse accountResponse = accountSpecification.createNew();
-        Response res = accountResponse.resBody();
-        assertEquals(201, res.getStatus());
-        Match.that(res.getBodyConverted()).isEqualTo("{ statusCode: '201', statusMsg: 'Account created successfully' }");
+        Dto.Account account = Customer.onboardNewAccountBy(CreatingDefaultAccount.withDefaultType());
+        assertEquals(201, account.resBody().getStatus());
+        Match.that(account.resBody().getBodyConverted()).isEqualTo("{ statusCode: '201', statusMsg: 'Account created successfully' }");
     }
 
     @Test

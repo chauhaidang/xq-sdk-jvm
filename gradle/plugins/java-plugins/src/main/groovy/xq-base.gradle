@@ -28,8 +28,14 @@ dependencies {
     runtimeOnly(platform("com.xq:platform"))
     annotationProcessor(platform("com.xq:platform"))
     compileOnly(platform("com.xq:platform"))
+    compileOnly("org.slf4j:slf4j-api")
+    compileOnly("org.projectlombok:lombok")
+
+    annotationProcessor("org.projectlombok:lombok")
     implementation(platform("com.xq:platform"))
+    implementation('com.intuit.karate:karate-core:1.4.1')
     testImplementation(platform("com.xq:platform"))
+    testImplementation 'com.intuit.karate:karate-core:1.4.1'
 }
 
 configurations {
@@ -97,13 +103,13 @@ tasks.named("build") {
 
 tasks.register("testSlow", Test) {
     group = "xq"
-    testClassesDirs = sourceSets.test.get().output.classesDirs
-    classpath = sourceSets.test.get().runtimeClasspath
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
     useJUnitPlatform {
         includeTags("slow")
     }
 }
 
 tasks.check {
-    dependsOn("CustomTest")
+    dependsOn("testSlow")
 }

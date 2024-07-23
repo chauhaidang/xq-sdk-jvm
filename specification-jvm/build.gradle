@@ -1,0 +1,10 @@
+plugins {
+    id 'xq-base'
+}
+
+group = 'com.xq'
+version = '1.0.0'
+
+dependencies {
+    implementation(project ':common')
+}

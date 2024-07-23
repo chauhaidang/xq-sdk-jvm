@@ -41,4 +41,5 @@ include 'business-logic'
 include 'common'
 include 'ms-accounts'
 include 'e2e-api'
+include 'specification-jvm'
 
