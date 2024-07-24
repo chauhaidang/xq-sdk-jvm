@@ -9,21 +9,15 @@ import com.xq.Dto;
 import com.xq.account.CreatingDefaultAccount;
 import org.junit.jupiter.api.Test;
 
-import java.util.UUID;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static com.xq.accounts.component.TestDto.*;
 
 public class AccountsApiTest {
 
-    String createEndpoint = "http://localhost:8080/api/accounts/create";
     String fetchEndpoint = "http://localhost:8080/api/accounts/fetch";
     String updateEndpoint = "http://localhost:8080/api/accounts/update";
     String deleteEndpoint = "http://localhost:8080/api/accounts/delete";
 
-    AccountSpecification accountSpecification = new AccountSpecification();
-
-    @Test
+    @Test()
     void testCreateNewAccount() throws Exception {
         Dto.Account account = Customer.onboardNewAccountBy(CreatingDefaultAccount.withDefaultType());
         assertEquals(201, account.resBody().getStatus());
@@ -32,24 +26,24 @@ public class AccountsApiTest {
 
     @Test
     void testCanNotCreateExistingAccount() throws Exception {
-        AccountResponse accountResponse = accountSpecification.createNew();
-        Response res = Http.to(createEndpoint)
-                .postJson(accountResponse.reqBody().toString());
-        Match.that(res.getStatus()).isEqualTo(400);
+        CreatingDefaultAccount creatingDefaultAccount = CreatingDefaultAccount.withDefaultType();
+        Customer.onboardNewAccountBy(creatingDefaultAccount);
+        Dto.Account account = Customer.onboardNewAccountBy(CreatingDefaultAccount.withSpecification(creatingDefaultAccount.getSpecification()));
+        Match.that(account.resBody().getStatus()).isEqualTo(400);
     }
 
     @Test
     void testCanUpdateAccountByAccountNumber() {
-        AccountResponse accountResponse = accountSpecification.createNew();
-        Response res = Http.to(fetchEndpoint).param("mobileNumber", accountResponse.mobileNumber()).get();
+        Dto.Account account = Customer.onboardNewAccountBy(CreatingDefaultAccount.withDefaultType());
+        Response res = Http.to(fetchEndpoint).param("mobileNumber", account.mobileNumber()).get();
         Json resAccount = Json.of(res.getBodyConverted());
 
         //Update an account with newly created account
-        String newName = UUID.randomUUID().toString();
-        int newNumber = AccountSpecification.randomNumber();
+        String newName = CreatingDefaultAccount.withDefaultType().getSpecification().getName();
+        String newNumber = CreatingDefaultAccount.withDefaultType().getSpecification().getMobileNumber();
         resAccount.set("name", newName);
         resAccount.set("email", newName + "@gmail.com");
-        resAccount.set("mobileNumber", newNumber + "");
+        resAccount.set("mobileNumber", newNumber);
         resAccount.set("account.accountType", "HomeLoan");
         res = Http.to(updateEndpoint).put(resAccount);
         Match.that(res.getStatus()).isEqualTo(200);
@@ -63,11 +57,11 @@ public class AccountsApiTest {
     @Test
     void testCanNotUpdateIfNotExist() {
         Json reqPayload = Json.object();
-        String newName = UUID.randomUUID().toString();
-        int newNumber = AccountSpecification.randomNumber();
+        String newName = CreatingDefaultAccount.withDefaultType().getSpecification().getName();
+        String newNumber = CreatingDefaultAccount.withDefaultType().getSpecification().getMobileNumber();
         reqPayload.set("name", newName);
         reqPayload.set("email", newName + "@gmail.com");
-        reqPayload.set("mobileNumber", newNumber + "");
+        reqPayload.set("mobileNumber", newNumber);
         reqPayload.set("account.accountType", "HomeLoan");
         reqPayload.set("account.accountNumber", "1234512309");
         reqPayload.set("account.branchAddress", "124 Bourke Street");
@@ -82,8 +76,8 @@ public class AccountsApiTest {
 
     @Test
     void testDeleteAnAccountByMobileNumber() {
-        AccountResponse accountResponse = accountSpecification.createNew();
-        Response res = Http.to(deleteEndpoint).param("mobileNumber", accountResponse.mobileNumber()).delete();
+        Dto.Account account = Customer.onboardNewAccountBy(CreatingDefaultAccount.withDefaultType());
+        Response res = Http.to(deleteEndpoint).param("mobileNumber", account.mobileNumber()).delete();
         assertEquals(200, res.getStatus());
         Match.that(res.getBodyConverted()).isEqualTo("{ statusCode: '200', statusMsg: 'Account deleted successfully' }");
     }

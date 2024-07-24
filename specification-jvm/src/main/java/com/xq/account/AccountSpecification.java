@@ -16,6 +16,11 @@ public class AccountSpecification {
     private String mobileNumber;
     private String endpoint = new ConfigReader().loadConfig().getApiGateway();
 
+    public String useRandomMobileNumber() {
+        mobileNumber = ((int) (Math.random() * 100000000)) + "";
+        return mobileNumber;
+    }
+
     public Dto.Account createAccount() {
         Dto.Account account = new Dto.Account(name, email, mobileNumber, null, null);
         Json body = Json.object();
