@@ -1,0 +1,24 @@
+meta {
+  name: update
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{host_accounts}}/api/accounts/update
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "name": "xq002",
+      "email": "xq002@gmail.com",
+      "mobileNumber": "0908447651",
+      "account": {
+          "accountNumber": 1870429170,
+          "accountType": "HomeLoan",
+          "branchAddress": "124 Bourke Street"
+      }
+  }
+}

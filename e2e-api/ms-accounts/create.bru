@@ -1,0 +1,23 @@
+meta {
+  name: create
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{host_accounts}}/api/accounts/create
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+      "name": "xq001",
+      "email": "xq001@gmail.com",
+      "mobileNumber": "0908447650"
+  }
+}
