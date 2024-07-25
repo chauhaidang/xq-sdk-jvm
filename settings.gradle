@@ -35,11 +35,11 @@ dependencyResolutionManagement {
     includeBuild("gradle/platform")
 }
 
-rootProject.name = 'xq-sdk'
+rootProject.name = 'xq-platform'
 include 'app'
 include 'business-logic'
 include 'common'
-include 'ms-accounts'
-include 'e2e-api'
-include 'specification-jvm'
+include 'fungus-accounts'
+include 'storm-breaker'
+include 'storm-breaker-spec'
 

@@ -2,7 +2,6 @@
 plugins {
     id "com.github.node-gradle.node" version "7.0.2"
 }
-
 group = 'com.xq'
 version = '0.0.1'
 
