@@ -1,0 +1,18 @@
+plugins {
+    id 'xq-base'
+}
+
+group = "com.xq"
+version = "1.0.0"
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    testImplementation 'com.codeborne:selenide-appium:7.4.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'commons-io:commons-io:2.16.1'
+    testRuntimeOnly 'org.slf4j:slf4j-simple'
+}

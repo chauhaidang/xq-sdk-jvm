@@ -42,4 +42,6 @@ include 'common'
 include 'fungus-accounts'
 include 'storm-breaker'
 include 'storm-breaker-spec'
+include 'sunstrike'
+include 'sunstrike'
 
