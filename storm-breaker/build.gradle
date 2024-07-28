@@ -9,7 +9,7 @@ node {
     download = false
 }
 
-tasks.register('start', YarnTask) {
+tasks.register('e2e', YarnTask) {
     group = 'xq'
-    args = ['start']
+    args = ['--cwd', './e2e', 'run', 'exec']
 }

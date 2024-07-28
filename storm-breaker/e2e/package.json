@@ -1,0 +1,14 @@
+{
+  "name": "xq-stormbreaker",
+  "version": "0.1.0",
+  "description": "tool for api e2e testing via gateway",
+  "author": "chauhaidang1 <chauhaidang1@gmail.com>",
+  "repository": "https://github.com/chauhaidang/xq-platform/storm-breaker/e2e",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+  },
+  "scripts": {
+    "exec": "bru run --env xq-local"
+  }
+}

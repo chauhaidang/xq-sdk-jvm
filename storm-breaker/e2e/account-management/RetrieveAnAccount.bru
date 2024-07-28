@@ -1,0 +1,25 @@
+meta {
+  name: RetrieveAnAccount
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{host_accounts}}/api/accounts/fetch?mobileNumber={{mobNo}}
+  body: none
+  auth: none
+}
+
+params:query {
+  mobileNumber: {{mobNo}}
+}
+
+assert {
+  res.body.name: eq {{name}}
+  res.body.email: eq {{name}}@gmail.com
+  res.body.mobileNumber: eq '{{mobNo}}'
+  res.body.account: isJson
+  res.body.account.accountNumber: isNumber
+  res.body.account.accountType: eq Savings
+  res.body.account.branchAddress: eq 123 Bourke Street
+}
