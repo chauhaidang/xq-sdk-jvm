@@ -6,8 +6,12 @@ import com.intuit.karate.Match;
 import com.intuit.karate.http.Response;
 import com.xq.Customer;
 import com.xq.Dto;
+import com.xq.account.AccountSpecification;
 import com.xq.account.CreatingDefaultAccount;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -16,6 +20,7 @@ public class AccountsApiTest {
     String fetchEndpoint = "http://localhost:8080/api/accounts/fetch";
     String updateEndpoint = "http://localhost:8080/api/accounts/update";
     String deleteEndpoint = "http://localhost:8080/api/accounts/delete";
+    final String expectedEmailValidationMsg = "Email address must be a valid email";
 
     @Test()
     void testCreateNewAccount() throws Exception {
@@ -30,6 +35,55 @@ public class AccountsApiTest {
         Customer.onboardNewAccountBy(creatingDefaultAccount);
         Dto.Account account = Customer.onboardNewAccountBy(CreatingDefaultAccount.withSpecification(creatingDefaultAccount.getSpecification()));
         Match.that(account.resBody().getStatus()).isEqualTo(400);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"044466666", "04446666666"})
+    void testCanNotCreateAccountWithInvalidMobileNumber(String mobileNumber) {
+        CreatingDefaultAccount creatingDefaultAccount = CreatingDefaultAccount.withDefaultType();
+        var specInvalidMobileNo = creatingDefaultAccount.getSpecification();
+        specInvalidMobileNo.setMobileNumber(mobileNumber);
+        var accountRes = Customer.onboardNewAccountBy(CreatingDefaultAccount.withSpecification(specInvalidMobileNo)).resBody();
+
+        Match.that(accountRes.getStatus()).isEqualTo(400);
+        Match.that(accountRes.getBodyConverted()).isEqualTo("{mobileNumber: 'Mobile number must be 10 digits'}");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"abcd", "123456789012345678901234567890*"})
+    void testCanNotCreateAccountWithInvalidName(String name) {
+        CreatingDefaultAccount creatingDefaultAccount = CreatingDefaultAccount.withDefaultType();
+        var specInvalidName = creatingDefaultAccount.getSpecification();
+        specInvalidName.setName(name);
+        var accountRes = Customer.onboardNewAccountBy(CreatingDefaultAccount.withSpecification(specInvalidName)).resBody();
+
+        Match.that(accountRes.getStatus()).isEqualTo(400);
+        Match.that(accountRes.getBodyConverted())
+                .isEqualTo(
+                        "{name: 'Customer name length must be greater or equal to 5 and less than or equal to 30'}");
+    }
+
+    @ParameterizedTest
+    @CsvSource(
+            value = {
+                    "user@|" + expectedEmailValidationMsg,
+                    "@domain.com|" + expectedEmailValidationMsg,
+                    "user.user@domain..com|" + expectedEmailValidationMsg,
+                    "user user@domain.com|" + expectedEmailValidationMsg,
+                    "user.@domain.com|" + expectedEmailValidationMsg,
+                    ".user@domain.com|" + expectedEmailValidationMsg,
+                    "|" + "Email address can not be null or empty",
+            }, delimiter = '|'
+    )
+    void testCanNotCreateAccountWithInvalidEmail(String email, String validationMsg) {
+        CreatingDefaultAccount creatingDefaultAccount = CreatingDefaultAccount.withDefaultType();
+        var specInvalidEmail = creatingDefaultAccount.getSpecification();
+        specInvalidEmail.setEmail(email);
+        var accountRes = Customer.onboardNewAccountBy(CreatingDefaultAccount.withSpecification(specInvalidEmail)).resBody();
+
+        Match.that(accountRes.getStatus()).isEqualTo(400);
+        Match.that(accountRes.getBodyConverted())
+                .isEqualTo(String.format("{email:'%s'}", validationMsg));
     }
 
     @Test

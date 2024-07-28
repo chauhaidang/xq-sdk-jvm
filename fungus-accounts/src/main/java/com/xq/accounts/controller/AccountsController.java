@@ -4,22 +4,26 @@ import com.xq.accounts.constants.AccountsContants;
 import com.xq.accounts.dto.CustomerDto;
 import com.xq.accounts.dto.ResponseDto;
 import com.xq.accounts.service.IAccountsService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/api/accounts", produces = {MediaType.APPLICATION_JSON_VALUE})
 @Slf4j
 @AllArgsConstructor
+@Validated
 public class AccountsController {
     IAccountsService accountService;
 
     @PostMapping("/create")
-    public ResponseEntity<ResponseDto> createAccount(@RequestBody CustomerDto customerDto) {
+    public ResponseEntity<ResponseDto> createAccount(@Valid @RequestBody CustomerDto customerDto) {
         log.info("Request received to create account for customer: {}", customerDto.toString());
         accountService.createAccount(customerDto);
         return ResponseEntity
@@ -28,14 +32,16 @@ public class AccountsController {
     }
 
     @GetMapping("/fetch")
-    public ResponseEntity<CustomerDto> fetchAccount(@RequestParam String mobileNumber) {
+    public ResponseEntity<CustomerDto> fetchAccount(
+            @RequestParam @Pattern(regexp = "(^$|[0-9]{10})", message = "MobileNumber must be 10 digits") String mobileNumber
+    ) {
         log.info("Request received to fetch account details for mobile number: {}", mobileNumber);
         CustomerDto customerDto = accountService.fetchAccount(mobileNumber);
         return ResponseEntity.ok(customerDto);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<ResponseDto> updateAccount(@RequestBody CustomerDto customerDto) {
+    public ResponseEntity<ResponseDto> updateAccount(@Valid @RequestBody CustomerDto customerDto) {
         log.info("Request received to update account details for customer with mobileNumber: {}",
                 customerDto.getAccount().getAccountNumber().toString());
         boolean isUpdated = accountService.updateAccount(customerDto);
@@ -49,7 +55,9 @@ public class AccountsController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<ResponseDto> deleteAccount(@RequestParam String mobileNumber) {
+    public ResponseEntity<ResponseDto> deleteAccount(
+            @RequestParam @Pattern(regexp = "(^$|[0-9]{10})", message = "MobileNumber must be 10 digits") String mobileNumber
+    ) {
         log.info("Request received to delete account details for mobile number: {}", mobileNumber);
         boolean isDeleted = accountService.deleteAccount(mobileNumber);
         return isDeleted ?
@@ -58,5 +66,6 @@ public class AccountsController {
                         .body(new ResponseDto(AccountsContants.STATUS_200, AccountsContants.MSG_DEL_ACCOUNT_SUCCESS)) :
                 ResponseEntity
                         .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                        .body(new ResponseDto(AccountsContants.STATUS_500, AccountsContants.MSG_500));    }
+                        .body(new ResponseDto(AccountsContants.STATUS_500, AccountsContants.MSG_500));
+    }
 }

@@ -17,7 +17,7 @@ public class AccountSpecification {
     private String endpoint = new ConfigReader().loadConfig().getApiGateway();
 
     public String useRandomMobileNumber() {
-        mobileNumber = ((int) (Math.random() * 100000000)) + "";
+        mobileNumber = ((int) ((Math.random() * 9000000000L) + 1000000000L)) + "";
         return mobileNumber;
     }
 
