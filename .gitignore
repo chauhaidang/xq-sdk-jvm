@@ -24,3 +24,4 @@ blackbox.log
 blackbox.pid
 
 node_modules/
+.DS_Store
