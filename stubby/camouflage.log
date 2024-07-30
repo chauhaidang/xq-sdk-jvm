@@ -1,0 +1,289 @@
+2024-03-25 16:36:36 [32minfo[39m: [3208] Master Started 
+2024-03-25 16:36:36 [32minfo[39m: Cluster metrics server listening to 5555, metrics exposed on http://localhost:5555/metrics . Set a negative value for config.monitoring.port to enable monitoring  
+2024-03-25 16:36:37 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-03-25 16:36:37 [32minfo[39m: [3216] Worker started 
+2024-03-25 16:36:37 [32minfo[39m: Handlebar helpers registration started 
+2024-03-25 16:36:37 [33mwarn[39m: Code Injection is enabled. 
+2024-03-25 16:36:37 [32minfo[39m: Handlebar helpers registration completed 
+2024-03-25 16:36:37 [33mwarn[39m: Found an external middleware config. Note that if you are using middleware injection, it is required to include this.app.use(prefix, this.allRoutes); in your middleware. prefix can be either root i.e. "/" or any other desired prefix string for your routes. 
+2024-03-25 16:36:38 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-03-25 16:36:38 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 
+2024-03-27 21:03:19 [32minfo[39m: [999] Master Started 
+2024-03-27 21:03:19 [32minfo[39m: Cluster metrics server listening to 5555, metrics exposed on http://localhost:5555/metrics . Set a negative value for config.monitoring.port to enable monitoring  
+2024-03-27 21:03:21 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-03-27 21:03:21 [32minfo[39m: [1004] Worker started 
+2024-03-27 21:03:21 [32minfo[39m: Handlebar helpers registration started 
+2024-03-27 21:03:21 [33mwarn[39m: Code Injection is enabled. 
+2024-03-27 21:03:21 [32minfo[39m: Handlebar helpers registration completed 
+2024-03-27 21:03:21 [33mwarn[39m: Found an external middleware config. Note that if you are using middleware injection, it is required to include this.app.use(prefix, this.allRoutes); in your middleware. prefix can be either root i.e. "/" or any other desired prefix string for your routes. 
+2024-03-27 21:03:21 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-03-27 21:03:21 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 
+2024-03-27 21:04:05 [31merror[39m: Unexpected string in JSON at position 117 
+2024-03-27 21:04:31 [31merror[39m: Unexpected string in JSON at position 128 
+2024-03-27 21:04:52 [31merror[39m: Unexpected string in JSON at position 128 
+2024-03-27 21:05:05 [31merror[39m: Unexpected number in JSON at position 128 
+2024-03-27 21:05:27 [31merror[39m: Unexpected number in JSON at position 128 
+2024-03-27 21:05:50 [31merror[39m: Unexpected number in JSON at position 128 
+2024-03-27 21:05:52 [31merror[39m: Unexpected number in JSON at position 128 
+2024-03-27 21:06:01 [31merror[39m: Unexpected token } in JSON at position 47 
+2024-03-27 21:06:02 [31merror[39m: Unexpected token } in JSON at position 47 
+2024-03-27 21:06:47 [33mwarn[39m: HTTP POST /hello-world :: Query Parameters: {} | Request Headers {"user-agent":"PostmanRuntime/7.36.1","accept":"*/*","cache-control":"no-cache","postman-token":"c57c03ff-d71c-48d5-91d3-8e40bf48af53","host":"localhost:8080","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"0"} | Request Body {} 
+2024-03-27 21:07:34 [33mwarn[39m: HTTP POST /hello-world :: Query Parameters: {} | Request Headers {"content-type":"application/json","user-agent":"PostmanRuntime/7.36.1","accept":"*/*","cache-control":"no-cache","postman-token":"d07998fd-9e8e-480b-801e-67e95482b5d8","host":"localhost:8080","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"28"} | Request Body {"nickname":["dang"]} 
+2024-03-27 21:07:42 [33mwarn[39m: HTTP POST /hello-world :: Query Parameters: {} | Request Headers {"content-type":"application/json","user-agent":"PostmanRuntime/7.36.1","accept":"*/*","cache-control":"no-cache","postman-token":"065ad12b-8162-419a-ae26-d58ea363ccd1","host":"localhost:8080","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"28"} | Request Body {"nickname":["dang"]} 
+2024-03-27 21:07:46 [32minfo[39m: [1574] Master Started 
+2024-03-27 21:07:46 [32minfo[39m: Cluster metrics server listening to 5555, metrics exposed on http://localhost:5555/metrics . Set a negative value for config.monitoring.port to enable monitoring  
+2024-03-27 21:07:47 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-03-27 21:07:47 [32minfo[39m: [1582] Worker started 
+2024-03-27 21:07:47 [32minfo[39m: Handlebar helpers registration started 
+2024-03-27 21:07:47 [33mwarn[39m: Code Injection is enabled. 
+2024-03-27 21:07:47 [32minfo[39m: Handlebar helpers registration completed 
+2024-03-27 21:07:47 [32minfo[39m: No middleware injection. 
+2024-03-27 21:07:47 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-03-27 21:07:47 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 
+2024-03-27 21:07:50 [32minfo[39m: OpenApi Swagger Petstore (v1.0.0) validation schema loaded from https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v3.0/petstore.json. 
+2024-03-27 21:08:10 [31merror[39m: Unexpected number in JSON at position 129 
+2024-03-27 21:08:55 [31merror[39m: Unexpected string in JSON at position 119 
+2024-03-27 21:09:06 [31merror[39m: Unexpected string in JSON at position 119 
+2024-03-27 21:09:23 [31merror[39m: Unexpected string in JSON at position 119 
+2024-03-27 21:11:06 [31merror[39m: Unexpected number in JSON at position 129 
+2024-03-27 21:11:08 [31merror[39m: Unexpected number in JSON at position 129 
+2024-03-27 21:11:36 [31merror[39m: Unexpected number in JSON at position 129 
+2024-03-27 21:11:37 [31merror[39m: Unexpected number in JSON at position 129 
+2024-03-27 21:11:45 [31merror[39m: Unexpected token } in JSON at position 140 
+2024-03-27 21:11:46 [31merror[39m: Unexpected token } in JSON at position 140 
+2024-03-27 21:28:05 [32minfo[39m: [3448] Master Started 
+2024-03-27 21:28:05 [32minfo[39m: Cluster metrics server listening to 5555, metrics exposed on http://localhost:5555/metrics . Set a negative value for config.monitoring.port to enable monitoring  
+2024-03-27 21:28:06 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-03-27 21:28:06 [32minfo[39m: [3452] Worker started 
+2024-03-27 21:28:06 [32minfo[39m: Handlebar helpers registration started 
+2024-03-27 21:28:06 [33mwarn[39m: Code Injection is enabled. 
+2024-03-27 21:28:06 [32minfo[39m: Handlebar helpers registration completed 
+2024-03-27 21:28:06 [33mwarn[39m: Found an external middleware config. Note that if you are using middleware injection, it is required to include this.app.use(prefix, this.allRoutes); in your middleware. prefix can be either root i.e. "/" or any other desired prefix string for your routes. 
+2024-03-27 21:28:06 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-03-27 21:28:06 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 
+2024-03-27 21:28:06 [33mwarn[39m: [3452] Worker Stopped Wed Mar 27 2024 21:28:06 GMT+0700 (Indochina Time) 
+2024-03-27 21:28:07 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-03-27 21:28:07 [32minfo[39m: [3457] Worker started 
+2024-03-27 21:28:07 [32minfo[39m: Handlebar helpers registration started 
+2024-03-27 21:28:07 [33mwarn[39m: Code Injection is enabled. 
+2024-03-27 21:28:07 [32minfo[39m: Handlebar helpers registration completed 
+2024-03-27 21:28:07 [33mwarn[39m: Found an external middleware config. Note that if you are using middleware injection, it is required to include this.app.use(prefix, this.allRoutes); in your middleware. prefix can be either root i.e. "/" or any other desired prefix string for your routes. 
+2024-03-27 21:28:07 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-03-27 21:28:07 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 
+2024-03-27 21:28:07 [33mwarn[39m: [3457] Worker Stopped Wed Mar 27 2024 21:28:07 GMT+0700 (Indochina Time) 
+2024-03-27 21:28:08 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-03-27 21:28:08 [32minfo[39m: [3464] Worker started 
+2024-03-27 21:28:08 [32minfo[39m: Handlebar helpers registration started 
+2024-03-27 21:28:08 [33mwarn[39m: Code Injection is enabled. 
+2024-03-27 21:28:08 [32minfo[39m: Handlebar helpers registration completed 
+2024-03-27 21:28:09 [33mwarn[39m: Found an external middleware config. Note that if you are using middleware injection, it is required to include this.app.use(prefix, this.allRoutes); in your middleware. prefix can be either root i.e. "/" or any other desired prefix string for your routes. 
+2024-03-27 21:28:09 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-03-27 21:28:09 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 
+2024-03-27 21:28:09 [33mwarn[39m: [3464] Worker Stopped Wed Mar 27 2024 21:28:09 GMT+0700 (Indochina Time) 
+2024-03-27 21:28:10 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-03-27 21:28:10 [32minfo[39m: [3466] Worker started 
+2024-03-27 21:28:10 [32minfo[39m: Handlebar helpers registration started 
+2024-03-27 21:28:10 [33mwarn[39m: Code Injection is enabled. 
+2024-03-27 21:28:10 [32minfo[39m: Handlebar helpers registration completed 
+2024-03-27 21:28:10 [33mwarn[39m: Found an external middleware config. Note that if you are using middleware injection, it is required to include this.app.use(prefix, this.allRoutes); in your middleware. prefix can be either root i.e. "/" or any other desired prefix string for your routes. 
+2024-03-27 21:28:10 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-03-27 21:28:10 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 
+2024-03-27 21:28:10 [33mwarn[39m: [3466] Worker Stopped Wed Mar 27 2024 21:28:10 GMT+0700 (Indochina Time) 
+2024-03-27 21:28:11 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-03-27 21:28:11 [32minfo[39m: [3471] Worker started 
+2024-03-27 21:28:11 [32minfo[39m: Handlebar helpers registration started 
+2024-03-27 21:28:11 [33mwarn[39m: Code Injection is enabled. 
+2024-03-27 21:28:11 [32minfo[39m: Handlebar helpers registration completed 
+2024-03-27 21:28:11 [33mwarn[39m: Found an external middleware config. Note that if you are using middleware injection, it is required to include this.app.use(prefix, this.allRoutes); in your middleware. prefix can be either root i.e. "/" or any other desired prefix string for your routes. 
+2024-03-27 21:28:11 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-03-27 21:28:11 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 
+2024-03-27 21:28:11 [33mwarn[39m: [3471] Worker Stopped Wed Mar 27 2024 21:28:11 GMT+0700 (Indochina Time) 
+2024-03-27 21:28:12 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-03-27 21:28:12 [32minfo[39m: [3473] Worker started 
+2024-03-27 21:28:12 [32minfo[39m: Handlebar helpers registration started 
+2024-03-27 21:28:12 [33mwarn[39m: Code Injection is enabled. 
+2024-03-27 21:28:12 [32minfo[39m: Handlebar helpers registration completed 
+2024-03-27 21:28:12 [33mwarn[39m: Found an external middleware config. Note that if you are using middleware injection, it is required to include this.app.use(prefix, this.allRoutes); in your middleware. prefix can be either root i.e. "/" or any other desired prefix string for your routes. 
+2024-03-27 21:28:12 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-03-27 21:28:12 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 
+2024-03-27 21:28:12 [33mwarn[39m: [3473] Worker Stopped Wed Mar 27 2024 21:28:12 GMT+0700 (Indochina Time) 
+2024-03-27 21:28:29 [32minfo[39m: [3515] Master Started 
+2024-03-27 21:28:29 [32minfo[39m: Cluster metrics server listening to 5555, metrics exposed on http://localhost:5555/metrics . Set a negative value for config.monitoring.port to enable monitoring  
+2024-03-27 21:28:30 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-03-27 21:28:30 [32minfo[39m: [3520] Worker started 
+2024-03-27 21:28:30 [32minfo[39m: Handlebar helpers registration started 
+2024-03-27 21:28:30 [33mwarn[39m: Code Injection is enabled. 
+2024-03-27 21:28:30 [32minfo[39m: Handlebar helpers registration completed 
+2024-03-27 21:28:30 [33mwarn[39m: Found an external middleware config. Note that if you are using middleware injection, it is required to include this.app.use(prefix, this.allRoutes); in your middleware. prefix can be either root i.e. "/" or any other desired prefix string for your routes. 
+2024-03-27 21:28:30 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-03-27 21:28:30 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 
+2024-03-27 21:28:43 [32minfo[39m: Routing to all stub definitions 
+2024-03-27 21:28:43 [33mwarn[39m: Validation is disabled. Request and responses are not validated. 
+2024-03-27 21:29:06 [32minfo[39m: Routing to all stub definitions 
+2024-03-27 21:29:53 [32minfo[39m: Routing to stub reader 
+2024-03-27 21:29:53 [32minfo[39m: Querying stub id=b9e8c849-87a0-4b7d-a9d1-4df041259ad7 
+2024-06-08 23:39:55 [32minfo[39m: [2635] Master Started 
+2024-06-08 23:39:55 [32minfo[39m: Cluster metrics server listening to 5555, metrics exposed on http://localhost:5555/metrics . Set a negative value for config.monitoring.port to enable monitoring  
+2024-06-08 23:39:56 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-06-08 23:39:56 [32minfo[39m: [2637] Worker started 
+2024-06-08 23:39:56 [32minfo[39m: Handlebar helpers registration started 
+2024-06-08 23:39:56 [33mwarn[39m: Code Injection is enabled. 
+2024-06-08 23:39:56 [32minfo[39m: Handlebar helpers registration completed 
+2024-06-08 23:39:56 [33mwarn[39m: Found an external middleware config. Note that if you are using middleware injection, it is required to include this.app.use(prefix, this.allRoutes); in your middleware. prefix can be either root i.e. "/" or any other desired prefix string for your routes. 
+2024-06-08 23:39:56 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-06-08 23:39:56 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 
+2024-06-23 16:40:59 [32minfo[39m: [8631] Master Started 
+2024-06-23 16:40:59 [32minfo[39m: Cluster metrics server listening to 5555, metrics exposed on http://localhost:5555/metrics . Set a negative value for config.monitoring.port to enable monitoring  
+2024-06-23 16:41:00 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-06-23 16:41:00 [32minfo[39m: [8633] Worker started 
+2024-06-23 16:41:00 [32minfo[39m: Handlebar helpers registration started 
+2024-06-23 16:41:00 [33mwarn[39m: Code Injection is enabled. 
+2024-06-23 16:41:00 [32minfo[39m: Handlebar helpers registration completed 
+2024-06-23 16:41:00 [33mwarn[39m: Found an external middleware config. Note that if you are using middleware injection, it is required to include this.app.use(prefix, this.allRoutes); in your middleware. prefix can be either root i.e. "/" or any other desired prefix string for your routes. 
+2024-06-23 16:41:00 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-06-23 16:41:00 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 
+2024-06-23 17:04:12 [32minfo[39m: Routing to all stub definitions 
+2024-06-23 17:04:12 [33mwarn[39m: Validation is disabled. Request and responses are not validated. 
+2024-06-23 17:04:12 [31merror[39m: No suitable mock file found: /Users/automation2/Documents/workspace/project/xq-app/xq-stub-server/mocks/__/POST.mock 
+2024-06-23 17:04:12 [33mwarn[39m: HTTP POST /api/v1/users :: Query Parameters: {} | Request Headers {"connection":"Upgrade, HTTP2-Settings","content-length":"2","host":"localhost:8080","http2-settings":"AAEAAEAAAAIAAAABAAMAAABkAAQBAAAAAAUAAEAA","upgrade":"h2c","user-agent":"Java-http-client/17.0.11","content-type":"application/json"} | Request Body {} 
+2024-06-23 17:30:47 [32minfo[39m: Routing to all stub definitions 
+2024-06-23 17:30:47 [31merror[39m: No suitable mock file found: /Users/automation2/Documents/workspace/project/xq-app/xq-stub-server/mocks/__/POST.mock 
+2024-06-23 17:30:47 [33mwarn[39m: HTTP POST /api/v1/users :: Query Parameters: {} | Request Headers {"connection":"Upgrade, HTTP2-Settings","content-length":"2","host":"localhost:8080","http2-settings":"AAEAAEAAAAIAAAABAAMAAABkAAQBAAAAAAUAAEAA","upgrade":"h2c","user-agent":"Java-http-client/17.0.11","content-type":"application/json"} | Request Body {} 
+2024-06-29 15:34:47 [32minfo[39m: [2129] Master Started 
+2024-06-29 15:34:47 [32minfo[39m: Cluster metrics server listening to 5555, metrics exposed on http://localhost:5555/metrics . Set a negative value for config.monitoring.port to enable monitoring  
+2024-06-29 15:34:48 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-06-29 15:34:48 [32minfo[39m: [2131] Worker started 
+2024-06-29 15:34:48 [32minfo[39m: Handlebar helpers registration started 
+2024-06-29 15:34:48 [33mwarn[39m: Code Injection is enabled. 
+2024-06-29 15:34:48 [32minfo[39m: Handlebar helpers registration completed 
+2024-06-29 15:34:48 [33mwarn[39m: Found an external middleware config. Note that if you are using middleware injection, it is required to include this.app.use(prefix, this.allRoutes); in your middleware. prefix can be either root i.e. "/" or any other desired prefix string for your routes. 
+2024-06-29 15:34:48 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-06-29 15:34:48 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 
+2024-06-29 18:21:10 [32minfo[39m: Routing to all stub definitions 
+2024-06-29 18:21:10 [33mwarn[39m: Validation is disabled. Request and responses are not validated. 
+2024-06-29 18:21:10 [31merror[39m: No suitable mock file found: /Users/automation2/Documents/workspace/project/xq-app/xq-stub-server/mocks/__/POST.mock 
+2024-06-29 18:21:10 [33mwarn[39m: HTTP POST /api/v1/users :: Query Parameters: {} | Request Headers {"connection":"Upgrade, HTTP2-Settings","content-length":"2","host":"localhost:8080","http2-settings":"AAEAAEAAAAIAAAABAAMAAABkAAQBAAAAAAUAAEAA","upgrade":"h2c","user-agent":"Java-http-client/17.0.11","content-type":"application/json"} | Request Body {} 
+2024-06-29 18:30:49 [32minfo[39m: Routing to all stub definitions 
+2024-06-29 18:30:49 [31merror[39m: No suitable mock file found: /Users/automation2/Documents/workspace/project/xq-app/xq-stub-server/mocks/__/POST.mock 
+2024-06-29 18:30:49 [33mwarn[39m: HTTP POST /api/v1/users :: Query Parameters: {} | Request Headers {"connection":"Upgrade, HTTP2-Settings","content-length":"2","host":"localhost:8080","http2-settings":"AAEAAEAAAAIAAAABAAMAAABkAAQBAAAAAAUAAEAA","upgrade":"h2c","user-agent":"Java-http-client/17.0.11","content-type":"application/json"} | Request Body {} 
+2024-06-29 18:35:49 [32minfo[39m: Routing to all stub definitions 
+2024-06-29 18:35:49 [31merror[39m: No suitable mock file found: /Users/automation2/Documents/workspace/project/xq-app/xq-stub-server/mocks/__/POST.mock 
+2024-06-29 18:35:49 [33mwarn[39m: HTTP POST /api/v1/users :: Query Parameters: {} | Request Headers {"connection":"Upgrade, HTTP2-Settings","content-length":"2","host":"localhost:8080","http2-settings":"AAEAAEAAAAIAAAABAAMAAABkAAQBAAAAAAUAAEAA","upgrade":"h2c","user-agent":"Java-http-client/17.0.11","content-type":"application/json"} | Request Body {} 
+2024-06-29 18:41:18 [32minfo[39m: Routing to all stub definitions 
+2024-06-29 18:41:18 [31merror[39m: No suitable mock file found: /Users/automation2/Documents/workspace/project/xq-app/xq-stub-server/mocks/__/POST.mock 
+2024-06-29 18:41:18 [33mwarn[39m: HTTP POST /api/v1/users :: Query Parameters: {} | Request Headers {"connection":"Upgrade, HTTP2-Settings","content-length":"2","host":"localhost:8080","http2-settings":"AAEAAEAAAAIAAAABAAMAAABkAAQBAAAAAAUAAEAA","upgrade":"h2c","user-agent":"Java-http-client/17.0.11","content-type":"application/json"} | Request Body {} 
+2024-06-29 18:43:33 [32minfo[39m: [4051] Master Started 
+2024-06-29 18:43:33 [32minfo[39m: Cluster metrics server listening to 5555, metrics exposed on http://localhost:5555/metrics . Set a negative value for config.monitoring.port to enable monitoring  
+2024-06-29 18:43:34 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-06-29 18:43:34 [32minfo[39m: [4059] Worker started 
+2024-06-29 18:43:34 [32minfo[39m: Handlebar helpers registration started 
+2024-06-29 18:43:34 [33mwarn[39m: Code Injection is enabled. 
+2024-06-29 18:43:34 [32minfo[39m: Handlebar helpers registration completed 
+2024-06-29 18:43:34 [33mwarn[39m: Found an external middleware config. Note that if you are using middleware injection, it is required to include this.app.use(prefix, this.allRoutes); in your middleware. prefix can be either root i.e. "/" or any other desired prefix string for your routes. 
+2024-06-29 18:43:34 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-06-29 18:43:34 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 
+2024-06-29 18:49:22 [32minfo[39m: [4881] Master Started 
+2024-06-29 18:49:22 [32minfo[39m: Cluster metrics server listening to 5555, metrics exposed on http://localhost:5555/metrics . Set a negative value for config.monitoring.port to enable monitoring  
+2024-06-29 18:49:23 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-06-29 18:49:23 [32minfo[39m: [4892] Worker started 
+2024-06-29 18:49:23 [32minfo[39m: Handlebar helpers registration started 
+2024-06-29 18:49:23 [33mwarn[39m: Code Injection is enabled. 
+2024-06-29 18:49:23 [32minfo[39m: Handlebar helpers registration completed 
+2024-06-29 18:49:23 [33mwarn[39m: Found an external middleware config. Note that if you are using middleware injection, it is required to include this.app.use(prefix, this.allRoutes); in your middleware. prefix can be either root i.e. "/" or any other desired prefix string for your routes. 
+2024-06-29 18:49:23 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-06-29 18:49:23 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 
+2024-06-29 18:50:42 [32minfo[39m: Routing to all stub definitions 
+2024-06-29 18:50:42 [33mwarn[39m: Validation is disabled. Request and responses are not validated. 
+2024-06-29 18:50:42 [31merror[39m: No suitable mock file found: /Users/automation2/Documents/workspace/project/xq-app/xq-stub-server/http/api/v1/accounts/POST.mock 
+2024-06-29 18:50:42 [33mwarn[39m: HTTP POST /api/v1/accounts :: Query Parameters: {} | Request Headers {"connection":"Upgrade, HTTP2-Settings","content-length":"2","host":"localhost:8080","http2-settings":"AAEAAEAAAAIAAAABAAMAAABkAAQBAAAAAAUAAEAA","upgrade":"h2c","user-agent":"Java-http-client/17.0.11","content-type":"application/json"} | Request Body {} 
+2024-06-29 18:51:28 [32minfo[39m: [5195] Master Started 
+2024-06-29 18:51:28 [32minfo[39m: Cluster metrics server listening to 5555, metrics exposed on http://localhost:5555/metrics . Set a negative value for config.monitoring.port to enable monitoring  
+2024-06-29 18:51:29 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-06-29 18:51:29 [32minfo[39m: [5202] Worker started 
+2024-06-29 18:51:29 [32minfo[39m: Handlebar helpers registration started 
+2024-06-29 18:51:29 [33mwarn[39m: Code Injection is enabled. 
+2024-06-29 18:51:29 [32minfo[39m: Handlebar helpers registration completed 
+2024-06-29 18:51:29 [33mwarn[39m: Found an external middleware config. Note that if you are using middleware injection, it is required to include this.app.use(prefix, this.allRoutes); in your middleware. prefix can be either root i.e. "/" or any other desired prefix string for your routes. 
+2024-06-29 18:51:29 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-06-29 18:51:29 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 
+2024-06-29 18:51:47 [33mwarn[39m: HTTP POST /api/v1/accounts :: Query Parameters: {} | Request Headers {"connection":"Upgrade, HTTP2-Settings","content-length":"15","host":"localhost:8080","http2-settings":"AAEAAEAAAAIAAAABAAMAAABkAAQBAAAAAAUAAEAA","upgrade":"h2c","user-agent":"Java-http-client/17.0.11","content-type":"application/json"} | Request Body {} 
+2024-06-29 18:52:15 [32minfo[39m: Routing to all stub definitions 
+2024-06-29 18:52:15 [33mwarn[39m: Validation is disabled. Request and responses are not validated. 
+2024-06-29 18:52:15 [33mwarn[39m: Unexpected number in JSON at position 35 
+2024-06-29 18:55:40 [32minfo[39m: [5791] Master Started 
+2024-06-29 18:55:40 [32minfo[39m: Cluster metrics server listening to 5555, metrics exposed on http://localhost:5555/metrics . Set a negative value for config.monitoring.port to enable monitoring  
+2024-06-29 18:55:41 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-06-29 18:55:41 [32minfo[39m: [5795] Worker started 
+2024-06-29 18:55:41 [32minfo[39m: Handlebar helpers registration started 
+2024-06-29 18:55:41 [33mwarn[39m: Code Injection is enabled. 
+2024-06-29 18:55:41 [32minfo[39m: Handlebar helpers registration completed 
+2024-06-29 18:55:41 [33mwarn[39m: Found an external middleware config. Note that if you are using middleware injection, it is required to include this.app.use(prefix, this.allRoutes); in your middleware. prefix can be either root i.e. "/" or any other desired prefix string for your routes. 
+2024-06-29 18:55:41 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-06-29 18:55:41 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 
+2024-06-29 18:59:23 [32minfo[39m: Routing to all stub definitions 
+2024-06-29 18:59:23 [33mwarn[39m: Validation is disabled. Request and responses are not validated. 
+2024-06-29 18:59:51 [32minfo[39m: Routing to all stub definitions 
+2024-06-29 19:01:48 [32minfo[39m: Routing to all stub definitions 
+2024-06-29 19:03:43 [32minfo[39m: [6988] Master Started 
+2024-06-29 19:03:43 [32minfo[39m: Cluster metrics server listening to 5555, metrics exposed on http://localhost:5555/metrics . Set a negative value for config.monitoring.port to enable monitoring  
+2024-06-29 19:03:44 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-06-29 19:03:44 [32minfo[39m: [6996] Worker started 
+2024-06-29 19:03:44 [32minfo[39m: Handlebar helpers registration started 
+2024-06-29 19:03:44 [33mwarn[39m: Code Injection is enabled. 
+2024-06-29 19:03:44 [32minfo[39m: Handlebar helpers registration completed 
+2024-06-29 19:03:44 [33mwarn[39m: Found an external middleware config. Note that if you are using middleware injection, it is required to include this.app.use(prefix, this.allRoutes); in your middleware. prefix can be either root i.e. "/" or any other desired prefix string for your routes. 
+2024-06-29 19:03:44 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-06-29 19:03:44 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 
+2024-06-29 19:03:51 [32minfo[39m: Routing to all stub definitions 
+2024-06-29 19:03:51 [33mwarn[39m: Validation is disabled. Request and responses are not validated. 
+2024-06-29 19:04:02 [32minfo[39m: Routing to all stub definitions 
+2024-06-29 19:06:18 [32minfo[39m: Routing to all stub definitions 
+2024-06-29 19:06:42 [32minfo[39m: Routing to all stub definitions 
+2024-06-29 19:08:00 [32minfo[39m: Routing to all stub definitions 
+2024-06-29 19:09:06 [32minfo[39m: Routing to all stub definitions 
+2024-06-29 19:09:32 [32minfo[39m: Routing to all stub definitions 
+2024-06-29 19:14:06 [32minfo[39m: Routing to all stub definitions 
+2024-06-29 19:14:44 [32minfo[39m: Routing to all stub definitions 
+2024-06-29 21:19:39 [32minfo[39m: [23806] Master Started 
+2024-06-29 21:19:39 [32minfo[39m: Cluster metrics server listening to 5555, metrics exposed on http://localhost:5555/metrics . Set a negative value for config.monitoring.port to enable monitoring  
+2024-06-29 21:19:41 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-06-29 21:19:41 [32minfo[39m: [23814] Worker started 
+2024-06-29 21:19:41 [32minfo[39m: Handlebar helpers registration started 
+2024-06-29 21:19:41 [33mwarn[39m: Code Injection is enabled. 
+2024-06-29 21:19:41 [32minfo[39m: Handlebar helpers registration completed 
+2024-06-29 21:19:41 [33mwarn[39m: Found an external middleware config. Note that if you are using middleware injection, it is required to include this.app.use(prefix, this.allRoutes); in your middleware. prefix can be either root i.e. "/" or any other desired prefix string for your routes. 
+2024-06-29 21:19:41 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-06-29 21:19:41 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 
+2024-06-29 21:24:08 [32minfo[39m: Routing to all stub definitions 
+2024-06-29 21:24:08 [33mwarn[39m: Validation is disabled. Request and responses are not validated. 
+2024-06-30 22:37:31 [32minfo[39m: [32715] Master Started 
+2024-06-30 22:37:31 [32minfo[39m: Cluster metrics server listening to 5555, metrics exposed on http://localhost:5555/metrics . Set a negative value for config.monitoring.port to enable monitoring  
+2024-06-30 22:37:32 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-06-30 22:37:32 [32minfo[39m: [32723] Worker started 
+2024-06-30 22:37:32 [32minfo[39m: Handlebar helpers registration started 
+2024-06-30 22:37:32 [33mwarn[39m: Code Injection is enabled. 
+2024-06-30 22:37:32 [32minfo[39m: Handlebar helpers registration completed 
+2024-06-30 22:37:33 [33mwarn[39m: Found an external middleware config. Note that if you are using middleware injection, it is required to include this.app.use(prefix, this.allRoutes); in your middleware. prefix can be either root i.e. "/" or any other desired prefix string for your routes. 
+2024-06-30 22:37:33 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-06-30 22:37:33 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 
+2024-07-16 23:46:28 [32minfo[39m: [5412] Master Started 
+2024-07-16 23:46:28 [32minfo[39m: Cluster metrics server listening to 5555, metrics exposed on http://localhost:5555/metrics . Set a negative value for config.monitoring.port to enable monitoring  
+2024-07-16 23:46:29 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-07-16 23:46:29 [32minfo[39m: [5420] Worker started 
+2024-07-16 23:46:29 [32minfo[39m: Handlebar helpers registration started 
+2024-07-16 23:46:29 [33mwarn[39m: Code Injection is enabled. 
+2024-07-16 23:46:29 [32minfo[39m: Handlebar helpers registration completed 
+2024-07-16 23:46:29 [33mwarn[39m: Found an external middleware config. Note that if you are using middleware injection, it is required to include this.app.use(prefix, this.allRoutes); in your middleware. prefix can be either root i.e. "/" or any other desired prefix string for your routes. 
+2024-07-16 23:46:29 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-07-16 23:46:29 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 
+2024-07-30 21:18:14 [32minfo[39m: [8285] Master Started 
+2024-07-30 21:18:14 [32minfo[39m: Cluster metrics server listening to 5555, metrics exposed on http://localhost:5555/metrics . Set a negative value for config.monitoring.port to enable monitoring  
+2024-07-30 21:18:15 [32minfo[39m: CORS enabled for http://localhost:3000, http://localhost:3001, http://localhost:5000 
+2024-07-30 21:18:15 [32minfo[39m: [8291] Worker started 
+2024-07-30 21:18:15 [32minfo[39m: Handlebar helpers registration started 
+2024-07-30 21:18:15 [33mwarn[39m: Code Injection is enabled. 
+2024-07-30 21:18:15 [32minfo[39m: Handlebar helpers registration completed 
+2024-07-30 21:18:15 [33mwarn[39m: Not re-registering createTodo. Already registered. 
+2024-07-30 21:18:15 [33mwarn[39m: Found an external middleware config. Note that if you are using middleware injection, it is required to include this.app.use(prefix, this.allRoutes); in your middleware. prefix can be either root i.e. "/" or any other desired prefix string for your routes. 
+2024-07-30 21:18:15 [32minfo[39m: Worker sharing HTTP server at http://localhost:8080 ⛳ 
+2024-07-30 21:18:15 [32minfo[39m: Worker sharing gRPC server at 0.0.0.0:4312 ⛳ 

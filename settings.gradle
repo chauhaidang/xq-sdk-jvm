@@ -44,4 +44,5 @@ include 'storm-breaker'
 include 'storm-breaker-spec'
 include 'sunstrike'
 include 'sunstrike'
+include 'stubby'
 
