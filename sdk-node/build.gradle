@@ -1,0 +1,14 @@
+plugins {
+    id "com.github.node-gradle.node" version "7.0.2"
+}
+group = 'com.xq'
+version = '0.1.0'
+
+node {
+    download = false
+}
+
+tasks.register('build', YarnTask) {
+    group = 'xq'
+    args = ['build']
+}
