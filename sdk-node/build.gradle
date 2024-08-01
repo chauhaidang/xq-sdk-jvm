@@ -4,11 +4,21 @@ plugins {
 group = 'com.xq'
 version = '0.1.0'
 
+ext {
+    typescript_version = '5.3.3'
+}
+
 node {
     download = false
 }
 
-tasks.register('build', YarnTask) {
+tasks.register('installTs', YarnTask) {
+    group = 'xq'
+    args = ['global', 'add', "typescript@$typescript_version"]
+}
+
+tasks.register('buildSdk', YarnTask) {
     group = 'xq'
     args = ['build']
+    dependsOn += [tasks.named('installTs'), tasks.named('yarn')]
 }
