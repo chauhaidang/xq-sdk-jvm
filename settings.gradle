@@ -36,13 +36,11 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = 'xq-platform'
-include 'app'
-include 'business-logic'
-include 'common'
+include 'sdk-jvm'
 include 'fungus-accounts'
-include 'storm-breaker'
 include 'storm-breaker-spec'
 include 'sunstrike'
-include 'sunstrike'
+include 'sdk-node'
 include 'stubby'
+include 'storm-breaker'
 
