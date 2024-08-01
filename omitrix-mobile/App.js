@@ -40,36 +40,34 @@ export default function App() {
     }
 
     return (
-        <View style={styles.container}>
-            <Text>Welcome to OMITRIX</Text>
-            <TextInput style={styles.input} placeholder={'User name'}
-                       onChangeText={text => onInputUserName(text)} value={userName}/>
-            <TextInput style={styles.input} placeholder={'Password'} secureTextEntry={true}
-                       onChangeText={text => onInputPassword(text)} value={password}/>
-            <StatusBar style="auto"/>
-            <Button style={styles.container} title="Login" testID='btnLogin' onPress={() => login()}/>
-            <Button style={styles.container} title="Logout" testID='btnLogout' onPress={() => logout()}/>
-            <Text style={styles.text}>{val}</Text>
+        <View style={styles.appContainer}>
+            <View style={styles.inputContainer}>
+                <TextInput style={styles.textInput} placeholder={'Your course goal'}/>
+                <Button style={styles.button} title={'Add goal'}/>
+            </View>
+            <View>
+                <Text>List of goals...</Text>
+            </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
+    appContainer: {
+        padding: 50
     },
-    input: {
-        margin: 20,
-        borderStyle: 'dashed',
-        borderColor: 'black'
+    inputContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
     },
-    text: {
-        margin: 20,
-        fontStyle: 'italic',
-        fontWeight: "bold",
-        alignSelf: "center"
+    textInput: {
+        borderColor: '#a2d5c6',
+        borderWidth: 1,
+        width: '80%',
+        marginRight: 8,
+        padding: 8
     },
+    button: {
+    }
 });
