@@ -11,8 +11,15 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.testng:testng:7.9.0'
+    testImplementation 'org.testng:testng:7.9.0'
     testImplementation 'com.codeborne:selenide-appium:7.4.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation 'commons-io:commons-io:2.16.1'
     testRuntimeOnly 'org.slf4j:slf4j-simple'
+}
+
+test {
+    useTestNG() {
+        suiteXmlFiles = ['src/test/resources/testng.xml'] as List<File>
+    }
 }

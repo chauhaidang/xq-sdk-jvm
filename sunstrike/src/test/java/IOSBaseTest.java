@@ -4,12 +4,12 @@ import org.testng.annotations.BeforeMethod;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
-public class AndroidBaseTest {
+public class IOSBaseTest {
     @BeforeMethod
     void setUp() {
         closeWebDriver();
         Configuration.browserSize = null;
-        Configuration.browser = AndroidDriverConfiguration.class.getName();
+        Configuration.browser = IOSDriverConfiguration.class.getName();
         Configuration.timeout = 1000 * 10;
         open();
     }
