@@ -1,0 +1,39 @@
+meta {
+  name: CreateAccountA
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{host_accounts}}/api/accounts/create
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "name": "{{name}}",
+      "email": "{{name}}@gmail.com",
+      "mobileNumber": "{{mobNo}}"
+  }
+}
+
+assert {
+  res.body.statusCode: eq '201'
+  res.body.statusMsg: eq Account created successfully
+}
+
+script:pre-request {
+  const { generate10DigitRandomNumber } = require('./utilities.js')
+  const { nanoid } = require("nanoid")
+  
+  bru.setVar('name', nanoid())
+  bru.setVar('mobNo', generate10DigitRandomNumber())
+  
+}
+
+tests {
+  test("should be able to create account", function() {
+    expect(res.status).to.equal(201);
+  });
+}
