@@ -138,10 +138,10 @@ public class AccountsApiTest {
 
     @Test
     void testCanNotDeleteAnAccountIfNotExist() {
-        Response res = Http.to(deleteEndpoint).param("mobileNumber", "123456789").delete();
+        Response res = Http.to(deleteEndpoint).param("mobileNumber", "1234567890").delete();
         assertEquals(404, res.getStatus());
         Match.that(res.getBodyConverted())
                 .contains(String.format(
-                        "{ errorCode: NOT_FOUND, errorMessage:Customer not found with the given input data mobileNumber:'%s' }", "123456789"));
+                        "{ errorCode: NOT_FOUND, errorMessage:Customer not found with the given input data mobileNumber:'%s' }", "1234567890"));
     }
 }
