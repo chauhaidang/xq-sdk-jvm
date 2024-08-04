@@ -1,5 +1,5 @@
 import io.appium.java_client.AppiumBy;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.clickable;
 import static com.codeborne.selenide.Condition.visible;
