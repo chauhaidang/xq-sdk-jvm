@@ -22,6 +22,7 @@ dependencies {
     testImplementation "org.springframework.boot:spring-boot-starter-test"
     testImplementation 'com.intuit.karate:karate-core:1.4.1'
     implementation(project(":api-client-spec"))
+    testImplementation 'io.rest-assured:rest-assured:5.5.0'
 }
 
 //Extension configuration
@@ -70,6 +71,10 @@ tasks.register("msCompTest", Test) {
         includeTestsMatching("com.xq.accounts.component.*")
     }
     outputs.upToDateWhen { false }
+    systemProperty 'junit.jupiter.execution.parallel.enabled', 'true'
+    systemProperty 'junit.jupiter.execution.parallel.mode.default','concurrent'
+    systemProperty 'junit.jupiter.execution.parallel.config.fixed.parallelism', 17
+    systemProperty 'junit.jupiter.execution.parallel.config.strategy', 'fixed'
 }
 
 tasks.register("xqStartApp", Exec) {
