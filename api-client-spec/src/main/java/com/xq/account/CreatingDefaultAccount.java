@@ -42,7 +42,7 @@ public class CreatingDefaultAccount implements AccountCommand {
     }
 
     @Override
-    public Dto.Account execute() {
+    public Dto.AccountJson execute() {
         return specification.createAccount();
     }
 }
