@@ -54,10 +54,7 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = 'xq-platform'
-include 'sunstrike'
 include 'fungus-accounts'
 include 'fungus-loans'
 include 'fungus-cards'
-include 'xq-ms-test-plan'
-include 'xq-system-test'
 
